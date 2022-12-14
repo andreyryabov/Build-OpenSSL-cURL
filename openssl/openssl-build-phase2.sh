@@ -149,7 +149,7 @@ buildIOS()
 	export CROSS_TOP="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer"
 	export CROSS_SDK="${PLATFORM}${IOS_SDK_VERSION}.sdk"
 	export BUILD_TOOLS="${DEVELOPER}"
-	export CC="${BUILD_TOOLS}/usr/bin/gcc -fembed-bitcode -arch ${ARCH}"
+	export CC="sccache ${BUILD_TOOLS}/usr/bin/gcc -fembed-bitcode -arch ${ARCH}"
 
 	echo -e "${subbold}Building ${OPENSSL_VERSION} for ${PLATFORM} ${IOS_SDK_VERSION} ${archbold}${ARCH}${dim} (iOS ${IOS_MIN_SDK_VERSION})"
 
@@ -226,8 +226,8 @@ buildIOSsim()
 	export CROSS_TOP="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer"
 	export CROSS_SDK="${PLATFORM}${IOS_SDK_VERSION}.sdk"
 	export BUILD_TOOLS="${DEVELOPER}"
-	export CC="${BUILD_TOOLS}/usr/bin/gcc"
-	export CXX="${BUILD_TOOLS}/usr/bin/gcc"
+	export CC="sccache ${BUILD_TOOLS}/usr/bin/gcc"
+	export CXX="sccache ${BUILD_TOOLS}/usr/bin/gcc"
 
 	echo -e "${subbold}Building ${OPENSSL_VERSION} for ${PLATFORM} ${iOS_SDK_VERSION} ${archbold}${ARCH}${dim} (iOS ${MIPHONEOS})"
 

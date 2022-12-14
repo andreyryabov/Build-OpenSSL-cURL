@@ -145,8 +145,8 @@ buildMac()
 		MACOS_VER="${MACOS_X86_64_VERSION}"
 		if [ ${BUILD_MACHINE} == 'arm64' ]; then
    			# Apple ARM Silicon Build Machine Detected - cross compile
-			export CC="clang"
-			export CXX="clang"
+			export CC="sccache clang"
+			export CXX="sccache clang"
 			export CFLAGS=" -Os -mmacosx-version-min=${MACOS_X86_64_VERSION} -arch ${ARCH} "
 			export LDFLAGS=" -arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk "
 			export CPPFLAGS=" -I.. -isysroot ${DEVELOPER}/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk "
@@ -164,8 +164,8 @@ buildMac()
 			export CFLAGS=" -Os -mmacosx-version-min=${MACOS_ARM64_VERSION} -arch ${ARCH} "
 		else
 			# Apple x86_64 Build Machine Detected - cross compile
-			export CC="clang"
-			export CXX="clang"
+			export CC="sccache clang"
+			export CXX="sccache clang"
 			export CFLAGS=" -Os -mmacosx-version-min=${MACOS_ARM64_VERSION} -arch ${ARCH} "
 			export LDFLAGS=" -arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk "
 			export CPPFLAGS=" -I.. -isysroot ${DEVELOPER}/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk "
@@ -222,8 +222,8 @@ buildCatalyst()
 		MACOS_VER="${MACOS_X86_64_VERSION}"
 		if [ ${BUILD_MACHINE} == 'arm64' ]; then
    			# Apple ARM Silicon Build Machine Detected - cross compile
-			export CC="clang"
-			export CXX="clang"
+			export CC="sccache clang"
+			export CXX="sccache clang"
 			export CFLAGS=" -Os -mmacosx-version-min=${MACOS_X86_64_VERSION} -arch ${ARCH} -fembed-bitcode -target ${ARCH}-apple-ios${CATALYST_IOS}-macabi "
 			export LDFLAGS=" -arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk "
 			export CPPFLAGS=" -I.. -isysroot ${DEVELOPER}/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk "
